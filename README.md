@@ -37,15 +37,15 @@ The inventory file defines the hosts in the kubernetes array with their respecti
 
 The 'inventory' file...
 
-  [kubenetes]
-  cluster1 ansible_host=192.168.2.2 kubernetes_role=master
-  cluster2 ansible_host=192.168.2.3 kubernetes_role=node
-  cluster3 ansible_host=192.168.2.4 kubernetes_role=node
+    [kubenetes]
+    cluster1 ansible_host=192.168.2.2 kubernetes_role=master
+    cluster2 ansible_host=192.168.2.3 kubernetes_role=node
+    cluster3 ansible_host=192.168.2.4 kubernetes_role=node
 
-  [kubernetes:vars]
-  ansible_ssh_user=vagrant
-  ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
-  kubernetes_apiserver_advertise_address=192.168.2.2
+    [kubernetes:vars]
+    ansible_ssh_user=vagrant
+    ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+    kubernetes_apiserver_advertise_address=192.168.2.2
 
 
 The inventory file defines the hosts in the kubernetes array with their respective ip addresses
@@ -56,21 +56,19 @@ It then runs a setup for Vagrant and calls each role to be played on the hosts.
 
 The 'main.yml' file...
 
-'''
-- hosts: kubernetes
-  become: true
+    - hosts: kubernetes
+      become: true
 
-  vars_files:
-    - vars/main.yml
+      vars_files:
+        - vars/main.yml
 
-  pre_tasks:
-    - include_tasks: tasks/vagrant-setup.yml
+      pre_tasks:
+        - include_tasks: tasks/vagrant-setup.yml
 
-  roles:
-    - fail2ban
-    - ssh
-    - autoupdate
-    - swap
-    - docker
-    - kubernetes
-'''
+      roles:
+        - fail2ban
+        - ssh
+        - autoupdate
+        - swap
+        - docker
+        - kubernetes
