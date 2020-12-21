@@ -1,6 +1,6 @@
 ---
 # See: https://github.com/kubernetes/kubernetes/issues/71305
-- name: iptables-legacy alternatives link.
+- name: Setup iptables-legacy due to above Issue.
   alternatives:
     name: '{{ item.name }}'
     path: '{{ item.path }}'
@@ -15,13 +15,13 @@
     dest: ~/kube-flannel.yml
   when: inventory_hostname == 'cluster1'
 
-- name: Patch Flannel manifest with VirtualBox interface.
+- name: Patch Flannel manifest on master node with correct interface.
   patch:
     src: patches/flannel-patch.txt
     dest: ~/kube-flannel.yml
   when: inventory_hostname == 'cluster1'
 
-- name: Set the correct path for the patched Flannel manifest.
+- name: Tell Kubernetes on master node where patched Flannel manifest exists.
   set_fact:
     kubernetes_flannel_manifest_file: ~/kube-flannel.yml
   when: inventory_hostname == 'cluster1'

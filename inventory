@@ -1,9 +1,9 @@
-[kube]
+[kubernetes]
 cluster1 ansible_host=192.168.2.2 kubernetes_role=master
 cluster2 ansible_host=192.168.2.3 kubernetes_role=node
 cluster3 ansible_host=192.168.2.4 kubernetes_role=node
 
-[kube:vars]
+[kubernetes:vars]
 ansible_ssh_user=vagrant
 ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
 kubernetes_apiserver_advertise_address=192.168.2.2
