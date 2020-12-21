@@ -1,0 +1,15 @@
+---
+# Install Docker.
+docker_install_compose: false
+docker_users:
+  - vagrant
+
+# Install Swap Config.
+swap_file_state: absent
+swap_file_path: /dev/mapper/packer--debian--10--amd64--vg-swap_1
+
+# Kubernetes Config.
+kubernetes_version: '1.19'
+kubernetes_allow_pods_on_master: false
+kubernetes_apiserver_advertise_address: '192.168.2.2'
+kubernetes_kubelet_extra_args: '--node-ip={{ ansible_host }}'

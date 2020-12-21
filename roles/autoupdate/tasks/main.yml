@@ -1,0 +1,4 @@
+---
+- include_tasks: autoupdate.yml
+  when:
+    - security_autoupdate_enabled | bool

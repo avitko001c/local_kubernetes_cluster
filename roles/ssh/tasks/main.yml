@@ -1,0 +1,9 @@
+---
+- name: Include Variables
+  include_vars: variables.yml
+
+# SSH
+- include_tasks: ssh.yml
+
+# SUDO
+- include_tasks: sudo.yml
