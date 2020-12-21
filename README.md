@@ -72,3 +72,19 @@ The 'main.yml' file...
         - swap
         - docker
         - kubernetes
+
+## Playbook Roles
+
+The 'fail2ban' role will install fail2ban on each host for some tighter security. This allows for any unwanted 'ssh' attempts to be automaticall blocked.  
+
+The 'ssh' role will configure the '/etc/sshd_config' for better security and restart ssh. It also updates '/etc/sudoers' file and adds the vagrant user to be able to 'sudo' without using a password.
+
+The 'autoupdate' role installes the 'unattended-upgrades' package and installs the needed config files to use it.
+
+The 'swap' role will make sure 'swap' is defined in the '/etc/fstab' file and configures swap.
+
+The 'docker' role installs 'Docker' on all the hosts and will setup the docker users and docker compose and restart docker.
+
+The 'kubernetes' role installs kubernetes on all the cluster nodes and defines cluster1 as the master node. It will setup 'Flannel' as the networking overlay. 
+
+
